@@ -61,8 +61,6 @@ def get_conversation_chain(vectorstore):
 def handle_userinput(user_question):
     response = st.session_state.conversation({'question': user_question})
     res_answer= response['answer']
-    print(res_answer,"-------------------------------------------------------------")
-    print("-------------------------------------------------------------")
     st.session_state.chat_history = response['chat_history']
     
     for i, message in enumerate(st.session_state.chat_history):
@@ -75,13 +73,10 @@ def handle_userinput(user_question):
     return res_answer
     
 def play_audio(message):
-    print(">>>>>>>>>>>>",message)
     ta_tts = gTTS(message)
     ta_tts.save('trans1.mp3')
-    print('done111112')
     player = simpleplayer('trans1.mp3')
     player.play()
-    print('done2222')
     
 
 def main():
